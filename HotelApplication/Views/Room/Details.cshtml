@@ -1,0 +1,29 @@
+﻿@model DomainModel.Room
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Room</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MinimumPrice)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MinimumPrice)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RoomSize)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RoomSize)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.RoomID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

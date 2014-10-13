@@ -42,6 +42,49 @@ namespace HotelApplication.Controllers
 			return View();
 		}
 
+		[HttpGet]
+		public ActionResult Edit(int id)
+		{
+
+			Room room = roomRepository.Get(id);
+			
+			return View(room);
+		}
+
+		[HttpPost]
+		public ActionResult Edit(Room room)
+		{
+			if (room != null)
+			{
+				roomRepository.Update(room);
+				return RedirectToAction("Index");
+			}
+			return View();
+		}
+
+		[HttpGet]
+		public ActionResult Details(int id)
+		{
+			Room room = roomRepository.Get(id);
+			return View(room);
+		}
+
+
+		[HttpGet]
+		public ActionResult Delete(int id)
+		{
+			Room room = roomRepository.Get(id);
+			return View(room);
+		}
+
+		[HttpPost, ActionName("Delete")]
+		[ValidateAntiForgeryToken]
+		public ActionResult DeleteConfirmed(int id)
+		{
+			Room room = roomRepository.Get(id);
+			roomRepository.Delete(room);
+			return RedirectToAction("Index");
+		}
 
 	}
 }
