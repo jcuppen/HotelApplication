@@ -21,7 +21,6 @@ namespace DomainModel
 			set;
 		}
 
-		//number of people that fit in the room.
 		public int RoomSize
 		{
 			get;
