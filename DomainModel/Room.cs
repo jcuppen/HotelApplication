@@ -15,13 +15,14 @@ namespace DomainModel
 			set;
 		}
 
-		public decimal minimumPrice
+		public decimal MinimumPrice
 		{
 			get;
 			set;
 		}
 
-		public int roomSize
+		//number of people that fit in the room.
+		public int RoomSize
 		{
 			get;
 			set;
