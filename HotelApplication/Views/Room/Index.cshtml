@@ -12,10 +12,10 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.minimumPrice)
+            @Html.DisplayNameFor(model => model.MinimumPrice)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.roomSize)
+            @Html.DisplayNameFor(model => model.RoomSize)
         </th>
         <th></th>
     </tr>
@@ -23,10 +23,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.minimumPrice)
+            @Html.DisplayFor(modelItem => item.MinimumPrice)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.roomSize)
+            @Html.DisplayFor(modelItem => item.RoomSize)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.RoomID }) |
