@@ -14,7 +14,6 @@ namespace HotelApplication.Controllers
 
 		public RoomController()
 		{
-			//productRepository = new DummyProductRepository();
 			roomRepository = new EntityRoomRepository();
 		}
 
@@ -30,18 +29,15 @@ namespace HotelApplication.Controllers
 			return View(new Room());
 		}
 
-
 		[HttpPost]
 		public ActionResult Create(Room room)
 		{
-			if (room != null)
+			if(room != null)
 			{
 				roomRepository.Create(room);
 				return RedirectToAction("Index");
 			}
 			return View();
 		}
-
-
 	}
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -17,6 +18,8 @@ namespace HotelApplication
 		protected void Application_Start()
 		{
 			AreaRegistration.RegisterAllAreas();
+
+			Database.SetInitializer<MyEntityContext>(null);
 
 			WebApiConfig.Register(GlobalConfiguration.Configuration);
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
