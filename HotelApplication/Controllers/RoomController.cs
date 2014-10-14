@@ -14,7 +14,6 @@ namespace HotelApplication.Controllers
 
 		public RoomController()
 		{
-			//productRepository = new DummyProductRepository();
 			roomRepository = new EntityRoomRepository();
 		}
 
@@ -30,61 +29,15 @@ namespace HotelApplication.Controllers
 			return View(new Room());
 		}
 
-
 		[HttpPost]
 		public ActionResult Create(Room room)
 		{
-			if (room != null)
+			if(room != null)
 			{
 				roomRepository.Create(room);
 				return RedirectToAction("Index");
 			}
 			return View();
 		}
-
-		[HttpGet]
-		public ActionResult Edit(int id)
-		{
-
-			Room room = roomRepository.Get(id);
-			
-			return View(room);
-		}
-
-		[HttpPost]
-		public ActionResult Edit(Room room)
-		{
-			if (room != null)
-			{
-				roomRepository.Update(room);
-				return RedirectToAction("Index");
-			}
-			return View();
-		}
-
-		[HttpGet]
-		public ActionResult Details(int id)
-		{
-			Room room = roomRepository.Get(id);
-			return View(room);
-		}
-
-
-		[HttpGet]
-		public ActionResult Delete(int id)
-		{
-			Room room = roomRepository.Get(id);
-			return View(room);
-		}
-
-		[HttpPost, ActionName("Delete")]
-		[ValidateAntiForgeryToken]
-		public ActionResult DeleteConfirmed(int id)
-		{
-			Room room = roomRepository.Get(id);
-			roomRepository.Delete(room);
-			return RedirectToAction("Index");
-		}
-
 	}
 }

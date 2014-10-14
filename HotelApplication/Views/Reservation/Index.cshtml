@@ -1,0 +1,106 @@
+﻿@model IEnumerable<DomainModel.Reservation>
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+	@Html.ActionLink("Create New", "Create")
+</p>
+<table>
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.ZipCode)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.City)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Street)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Number)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.EmailAddress)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.TotalPrice)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.BankAccountNumber)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DayOfArrival)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DayOfDeparture)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.InvoiceZipCode)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.InvoiceCity)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.InvoiceStreet)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.InvoiceNumber)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach(var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.ZipCode)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.City)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Street)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Number)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.EmailAddress)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.TotalPrice)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.BankAccountNumber)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DayOfArrival)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DayOfDeparture)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.InvoiceZipCode)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.InvoiceCity)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.InvoiceStreet)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.InvoiceNumber)
+			</td>
+			<td>
+				@Html.ActionLink("Edit", "Edit", new { id = item.ReservationID }) |
+				@Html.ActionLink("Details", "Details", new { id = item.ReservationID }) |
+				@Html.ActionLink("Delete", "Delete", new { id = item.ReservationID })
+			</td>
+		</tr>
+	}
+
+</table>

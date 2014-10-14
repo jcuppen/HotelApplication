@@ -46,7 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\IPersonRepository.cs" />
+    <Compile Include="Repositories\IReservationRepository.cs" />
     <Compile Include="Repositories\IRoomRepository.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="Reservation.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
