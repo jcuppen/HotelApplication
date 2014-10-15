@@ -6,7 +6,8 @@ namespace DomainModel
 {
 	public class Reservation
 	{
-		public List<Person> People { get; set; }
+		public Person[] People { get; set; }
+		public int NumberOfGuests { get; set; }
 
 		[Key]
 		public int ReservationID { get; set; }
@@ -27,5 +28,16 @@ namespace DomainModel
 		public string InvoiceCity { get; set; }
 		public string InvoiceStreet { get; set; }
 		public int InvoiceNumber { get; set; }
+
+		public Reservation()
+		{
+		}
+
+		public Reservation(int numberOfPeople, DateTime begin, DateTime end)
+		{
+			NumberOfGuests = numberOfPeople;
+			DayOfArrival = begin;
+			DayOfDeparture = end;
+		}
 	}
 }

@@ -24,9 +24,9 @@ namespace HotelApplication.Controllers
 		}
 
 		[HttpGet]
-		public ActionResult Create()
+		public ActionResult Create(int numberOfPeople, DateTime begin, DateTime end)
 		{
-			return View(new Reservation());
+			return View(new Reservation(numberOfPeople, begin, end));
 		}
 
 		[HttpPost]

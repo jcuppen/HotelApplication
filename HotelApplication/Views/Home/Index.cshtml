@@ -1,5 +1,50 @@
-﻿@{
+﻿@model HotelApplication.Models.ReservationStarter
+
+@{
     ViewBag.Title = "Index";
 }
 
+<ul>
+	<li>@Html.ActionLink("Reservations", "GetAll", "Reservation")</li>
+	<li>@Html.ActionLink("Rooms", "GetAll", "Room")</li>
+</ul>
 <h2>Index</h2>
+
+<h2>Welkom</h2>
+
+@using (Html.BeginForm()) {
+	@Html.AntiForgeryToken()
+	@Html.ValidationSummary(true)
+
+	<fieldset>
+		<legend>Make a new Reservation</legend>
+
+		<div class="editor-label">
+			@Html.LabelFor(model => model.NumberOfPeople)
+		</div>
+		<div class="editor-field">
+			@Html.EditorFor(model => model.NumberOfPeople)
+			@Html.ValidationMessageFor(model => model.NumberOfPeople)
+		</div>
+
+		<div class="editor-label">
+			@Html.LabelFor(model => model.Begin)
+		</div>
+		<div class="editor-field">
+			@Html.EditorFor(model => model.Begin)
+			@Html.ValidationMessageFor(model => model.Begin)
+		</div>
+
+		<div class="editor-label">
+			@Html.LabelFor(model => model.End)
+		</div>
+		<div class="editor-field">
+			@Html.EditorFor(model => model.End)
+			@Html.ValidationMessageFor(model => model.End)
+		</div>
+
+		<p>
+			<input type="submit" value="Begin Reservation" />
+		</p>
+	</fieldset>
+}
