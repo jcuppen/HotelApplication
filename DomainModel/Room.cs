@@ -9,6 +9,8 @@ namespace DomainModel
 
 		public decimal  MinimumPrice { get; set; }
 
+		public decimal AdditionalCosts { get; set; }
+
 		public int RoomSize { get; set; }
 		// en nog meer
 	}
