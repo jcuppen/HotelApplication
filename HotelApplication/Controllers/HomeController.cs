@@ -20,12 +20,14 @@ namespace HotelApplication.Controllers
 			ReservationStarter r = reservationStarter;
 			if (r != null)
 			{
-				return RedirectToAction("Create", "Reservation", new
-				{
-					numberOfPeople = reservationStarter.NumberOfPeople,
-					begin = reservationStarter.Begin,
-					end = reservationStarter.End
-				});
+				//return RedirectToAction("NewReservation", "Reservation", new
+				//{
+				//	numberOfPeople = reservationStarter.NumberOfPeople,
+				//	begin = reservationStarter.Begin,
+				//	end = reservationStarter.End
+				//});
+
+				return RedirectToAction("NewReservation", "Reservation", r);
 			}
 			return View();
 		}

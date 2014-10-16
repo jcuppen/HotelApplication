@@ -132,6 +132,7 @@
     <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="EntityReservationRepository.cs" />
+    <Compile Include="EntityPersonRepository.cs" />
     <Compile Include="EntityRoomRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -229,7 +230,9 @@
     <Content Include="Views\Room\Index.cshtml" />
     <Content Include="Views\Room\Create.cshtml" />
     <Content Include="Views\Reservation\Index.cshtml" />
-    <Content Include="Views\Reservation\Create.cshtml" />
+    <Content Include="Views\Reservation\NewReservation - Copy.cshtml" />
+    <Content Include="Views\Reservation\nee.cshtml" />
+    <Content Include="Views\Reservation\NewReservation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

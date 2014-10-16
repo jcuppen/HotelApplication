@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace DomainModel
 {
 	public class Person
 	{
+		[Key]
 		public int PersonID { get; set; }
 		public string FirstName { get; set; }
 		public string Infix { get; set; }

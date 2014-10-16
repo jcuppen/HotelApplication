@@ -7,7 +7,7 @@ namespace DomainModel
 	public class Reservation
 	{
 		public Person[] People { get; set; }
-		public int NumberOfGuests { get; set; }
+		//public int NumberOfGuests { get; set; }
 
 		[Key]
 		public int ReservationID { get; set; }
@@ -33,9 +33,9 @@ namespace DomainModel
 		{
 		}
 
-		public Reservation(int numberOfPeople, DateTime begin, DateTime end)
+		public Reservation( DateTime begin, DateTime end)
 		{
-			NumberOfGuests = numberOfPeople;
+			//NumberOfGuests = numberOfPeople;
 			DayOfArrival = begin;
 			DayOfDeparture = end;
 		}
