@@ -12,6 +12,8 @@
 
 <h2>Welkom</h2>
 
+@ViewBag.message
+
 @using (Html.BeginForm()) {
 	@Html.AntiForgeryToken()
 	@Html.ValidationSummary(true)

@@ -47,7 +47,8 @@ namespace HotelApplication
 
 		public List<Reservation> GetBetween(DateTime begin, DateTime end)
 		{
-			return dbContext.Reservations.ToList();
+			List<Reservation> x = dbContext.Reservations.Where(p => (p.DayOfArrival > begin && p.DayOfArrival < end) || (p.DayOfDeparture > begin && p.DayOfDeparture < end) || (p.DayOfArrival < begin && p.DayOfDeparture > end)).ToList();
+			return x;
 		}
 	}
 }
