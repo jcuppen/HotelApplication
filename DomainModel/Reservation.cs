@@ -7,6 +7,7 @@ namespace DomainModel
 	public class Reservation
 	{
 		public Person[] People { get; set; }
+		public List<Room> Rooms { get; set; }
 		//public int NumberOfGuests { get; set; }
 
 		[Key]

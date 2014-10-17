@@ -33,20 +33,16 @@ namespace HotelApplication.Controllers
 		//}
 
 		[HttpGet]
-		public ActionResult NewReservation(ReservationStarter r)
+		public ActionResult NewReservation()
 		{
-			int numberOfPeople = r.NumberOfPeople;
-			DateTime begin = r.Begin;
-			DateTime end = r.End;
+			Reservation r = (Reservation) Session["newReservation"];
 
 			//Reservation res = new Reservation(numberOfPeople, begin, end);
-			Reservation res = new Reservation(begin, end);
-			res.People = new Person[r.NumberOfPeople];
-			for (int i = 0; i < r.NumberOfPeople - 1; i++)
+			for (int i = 0; i < r.People.Length; i++)
 			{
-				res.People[i] = new Person();
+				r.People[i] = new Person();
 			}
-			return View(res);
+			return View(r);
 		}
 
 		[HttpPost]
@@ -54,15 +50,23 @@ namespace HotelApplication.Controllers
 		{
 			if (reservation != null)
 			{
+				//List<Reservation> r = reservationRepository.GetAll();
+
 				//reservation.NumberOfGuests = 3;
-				foreach (var item in reservation.People)
-				{
-					personRepository.Create(item);
-				}
-				reservationRepository.Create(reservation);
+				//foreach (var item in reservation.People)
+				//{
+					
+					//personRepository.Create(item);
+				//}
+				//reservationRepository.Create(reservation);
 				return RedirectToAction("Index");
 			}
 			return View();
+		}
+
+		public ActionResult ReservationOverview()
+		{
+			return null;
 		}
 
 		public ActionResult nee()
