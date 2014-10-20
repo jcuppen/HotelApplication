@@ -12,11 +12,7 @@ namespace HotelApplication
 	{
 		public DbSet<Room> Rooms { get; set; }
 		public DbSet<Reservation> Reservations { get; set; }
-		public DbSet<Person> Persons
-		{
-			get;
-			set;
-		}
+		public DbSet<Person> Persons { get;	set; }
 
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)

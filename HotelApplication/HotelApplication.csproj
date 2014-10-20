@@ -138,6 +138,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\ReservationStarter.cs" />
     <Compile Include="MyEntityContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -231,6 +232,8 @@
     <Content Include="Views\Room\Create.cshtml" />
     <Content Include="Views\Reservation\Index.cshtml" />
     <Content Include="Views\Reservation\NewReservation.cshtml" />
+    <Content Include="Views\Reservation\ShowSummary.cshtml" />
+    <Content Include="Views\Reservation\Invoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

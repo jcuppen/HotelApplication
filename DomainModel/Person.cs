@@ -7,10 +7,15 @@ namespace DomainModel
 	{
 		[Key]
 		public int PersonID { get; set; }
+		[Required]
 		public string FirstName { get; set; }
 		public string Infix { get; set; }
+		[Required]
 		public string LastName { get; set; }
+		[Required]
 		public DateTime DateOfBirth { get; set; }
-		public char Gender { get; set; }
+		[Required]
+		public string Gender { get; set; }
+		public virtual Reservation Reservation	{ get; set; }
 	}
 }

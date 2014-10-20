@@ -10,5 +10,12 @@ namespace HotelApplication.Models
 		public int NumberOfPeople { get; set; }
 		public DateTime Begin { get; set; }
 		public DateTime  End { get; set; }
+
+		public ReservationStarter()
+		{
+			Begin = DateTime.Today;
+			End = DateTime.Today.AddDays(1);
+
+		}
 	}
 }
