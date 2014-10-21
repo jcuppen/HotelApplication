@@ -1,68 +1,75 @@
 ﻿@model HotelApplication.Models.Invoice
 
 @{
-    ViewBag.Title = "Invoice";
+	ViewBag.Title = "Invoice";
 }
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Invoice information</h3>
+		</div>
+		<div class="panel-body">
 
-<h2>Invoice</h2>
+			@using (Html.BeginForm())
+			{
+				@Html.AntiForgeryToken()
+				@Html.ValidationSummary(true)
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+				<fieldset>
 
-    <fieldset>
-        <legend>Invoice</legend>
+					<div class="editor-label">
+						<p><b>Zipcode</b></p>
+					</div>
+					<div class="editor-field">
+						@Html.EditorFor(model => model.ZipCode)
+						@Html.ValidationMessageFor(model => model.ZipCode)
+					</div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.ZipCode)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.ZipCode)
-            @Html.ValidationMessageFor(model => model.ZipCode)
-        </div>
+					<div class="editor-label">
+						<p><b>City</b></p>
+					</div>
+					<div class="editor-field">
+						@Html.EditorFor(model => model.City)
+						@Html.ValidationMessageFor(model => model.City)
+					</div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.City)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.City)
-            @Html.ValidationMessageFor(model => model.City)
-        </div>
+					<div class="editor-label">
+						<p><b>Street</b></p>
+					</div>
+					<div class="editor-field">
+						@Html.EditorFor(model => model.Street)
+						@Html.ValidationMessageFor(model => model.Street)
+					</div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Street)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Street)
-            @Html.ValidationMessageFor(model => model.Street)
-        </div>
+					<div class="editor-label">
+						<p><b>House number</b></p>
+					</div>
+					<div class="editor-field">
+						@Html.EditorFor(model => model.Number)
+						@Html.ValidationMessageFor(model => model.Number)
+					</div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Number)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Number)
-            @Html.ValidationMessageFor(model => model.Number)
-        </div>
+					<div class="editor-label">
+						<p><b>Bank account number</b></p>
+					</div>
+					<div class="editor-field">
+						@Html.EditorFor(model => model.BankAccountNumber)
+						@Html.ValidationMessageFor(model => model.BankAccountNumber)
+					</div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.BankAccountNumber)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.BankAccountNumber)
-            @Html.ValidationMessageFor(model => model.BankAccountNumber)
-        </div>
+					<br>
+						<input type="submit" value="Create" class="btn btn-success"/>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
+						@Html.ActionLink("Cancel", "Index", "Home", null, new
+{
+	@class = "btn btn-warning"
+})
+				</fieldset>
+			}
 
-<div>
-	@Html.ActionLink("Cancel", "Index", "Home")
+			@section Scripts {
+				@Scripts.Render("~/bundles/jqueryval")
+			}
+		</div>
+	</div>
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

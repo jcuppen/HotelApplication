@@ -1,9 +1,16 @@
 ﻿@{
-    ViewBag.Title = "Success";
+	ViewBag.Title = "Success";
 }
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h2>Success</h2>
 
-<h2>Success</h2>
 
 
-
-@Html.ActionLink("Back", "Index", "Home")
+			@Html.ActionLink("Back", "Index", "Home", null, new
+{ @class="btn btn-default"
+})
+		</div>
+	</div>
+</div>

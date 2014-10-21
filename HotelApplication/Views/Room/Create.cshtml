@@ -1,51 +1,64 @@
 ﻿@model DomainModel.Room
 
 @{
-    ViewBag.Title = "Create";
+	ViewBag.Title = "Create";
 }
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Create room</h3>
+		</div>
+		<div class="panel-body">
 
-<h2>Create</h2>
+			@using (Html.BeginForm())
+			{
+				@Html.AntiForgeryToken()
+				@Html.ValidationSummary(true)
 
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+				<fieldset>
 
-    <fieldset>
-        <legend>Room</legend>
+					<div class="editor-label">
+						<p><b>Minimum price</b></p>
+					</div>
+					<div class="editor-field">
+						@Html.EditorFor(model => model.MinimumPrice)
+						@Html.ValidationMessageFor(model => model.MinimumPrice)
+					</div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.MinimumPrice)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.MinimumPrice)
-            @Html.ValidationMessageFor(model => model.MinimumPrice)
-        </div>
+					<div class="editor-label">
+						<p><b>Additional cost</b></p>
+					</div>
+					<div class="editor-field">
+						@Html.EditorFor(model => model.AdditionalCosts)
+						@Html.ValidationMessageFor(model => model.AdditionalCosts)
 
-		<div class="editor-label">
-            @Html.LabelFor(model => model.AdditionalCosts)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.AdditionalCosts )
-            @Html.ValidationMessageFor(model => model.AdditionalCosts)
+						<div class="editor-label">
+							<p><b>Room size</b></p>
+						</div>
+						<div class="editor-field">
+							@Html.EditorFor(model => model.RoomSize)
+							@Html.ValidationMessageFor(model => model.RoomSize)
+						</div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.RoomSize)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.RoomSize)
-            @Html.ValidationMessageFor(model => model.RoomSize)
-        </div>
+						<br>
+							<input type="submit" value="Create" class="btn btn-success"/>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
-}
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+							@Html.ActionLink("Cancel", "Index", null, new
+{
+	@class = "btn btn-warning"
+})
+
+
+				</fieldset>
+			}
+
+			
+
+
+			@section Scripts {
+				@Scripts.Render("~/bundles/jqueryval")
+			}
+		</div>
+	</div>
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

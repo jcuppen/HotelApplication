@@ -1,53 +1,54 @@
 ﻿@model HotelApplication.Models.ReservationStarter
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
 
-<ul>
-	<li>@Html.ActionLink("Reservations", "Index", "Reservation")</li>
-	<li>@Html.ActionLink("Rooms", "Index", "Room")</li>
-	<li>@Html.ActionLink("Guests", "Index", "Person")</li>
-</ul>
-<h2>Index</h2>
 
-<h2>Welkom</h2>
+<div class="container">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<h2>Welcome</h2>
 
-@ViewBag.message
+			@ViewBag.message
 
-@using (Html.BeginForm()) {
-	@Html.AntiForgeryToken()
-	@Html.ValidationSummary(true)
+			@using (Html.BeginForm())
+			{
+				@Html.AntiForgeryToken()
+				@Html.ValidationSummary(true)
 
-	<fieldset>
-		<legend>Make a new Reservation</legend>
+				<fieldset>
+					<legend>Make a new Reservation</legend>
 
-		<div class="editor-label">
-			@Html.LabelFor(model => model.NumberOfPeople)
+					<div class="editor-label">
+						<p><b>Number of guests</b></p>
+					</div>
+					<div class="editor-field">
+						@Html.EditorFor(model => model.NumberOfPeople)
+						@Html.ValidationMessageFor(model => model.NumberOfPeople)
+					</div>
+
+					<div class="editor-label">
+						<p><b>Day of arrival</b></p>
+					</div>
+					<div class="editor-field">
+						@Html.EditorFor(model => model.Begin)
+						@Html.ValidationMessageFor(model => model.Begin)
+					</div>
+
+					<div class="editor-label">
+						<p><b>Day of departure</b></p>
+					</div>
+					<div class="editor-field">
+						@Html.EditorFor(model => model.End)
+						@Html.ValidationMessageFor(model => model.End)
+					</div>
+
+					<br>
+					<input type="submit" value="Begin Reservation" class="btn btn-primary" />
+
+				</fieldset>
+			}
 		</div>
-		<div class="editor-field">
-			@Html.EditorFor(model => model.NumberOfPeople)
-			@Html.ValidationMessageFor(model => model.NumberOfPeople)
-		</div>
-
-		<div class="editor-label">
-			@Html.LabelFor(model => model.Begin)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(model => model.Begin)
-			@Html.ValidationMessageFor(model => model.Begin)
-		</div>
-
-		<div class="editor-label">
-			@Html.LabelFor(model => model.End)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(model => model.End)
-			@Html.ValidationMessageFor(model => model.End)
-		</div>
-
-		<p>
-			<input type="submit" value="Begin Reservation" />
-		</p>
-	</fieldset>
-}
+	</div>
+</div>

@@ -1,50 +1,81 @@
 ﻿@model IEnumerable<DomainModel.Room>
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Rooms</h3>
+		</div>
+		<div class="panel-body">
 
-<h2>Index</h2>
+			@Session["msg"]
+			@{Session["msg"] = null;}
 
-@Session["msg"]
-@{Session["msg"] = null;}
+			<p>
+				@Html.ActionLink("Create New", "Create", null, new
+{
+	@class = "btn btn-success"
+})
+			</p>
+			<table class="table table-striped">
+				<tr>
+					<th>
+						Minimum Price
+					</th>
+					<th>
+						Additional cost
+					</th>
+					<th>
+						Room size
+					</th>
+					<th></th>
+				</tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MinimumPrice)
-        </th>
-		<th>
-			@Html.DisplayNameFor(model => model.AdditionalCosts)
-		</th>
-        <th>
-            @Html.DisplayNameFor(model => model.RoomSize)
-        </th>
-        <th></th>
-    </tr>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => item.MinimumPrice)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.AdditionalCosts)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.RoomSize)
+						</td>
+						<td>
+							@Html.ActionLink("Edit", "Edit", new
+	   {
+		   id = item.RoomID
+	   }, new
+	   {
+		   @class = "btn btn-warning"
+	   })
+							@Html.ActionLink("Details", "Details", new
+	   {
+		   id = item.RoomID
+	   }, new
+	   {
+		   @class = "btn btn-primary"
+	   })
+							@Html.ActionLink("Delete", "Delete", new
+	   {
+		   id = item.RoomID
+	   }, new
+	   {
+		   @class = "btn btn-danger"
+	   })
+						</td>
+					</tr>
+				}
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MinimumPrice)
-        </td>
-		<td>
-			@Html.DisplayFor(modelItem => item.AdditionalCosts)
-		</td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RoomSize)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id =item.RoomID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RoomID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RoomID })
-        </td>
-    </tr>
-}
-
-</table>
-
-@Html.ActionLink("Back", "Index", "Home")
+			</table>
+			@Html.ActionLink("Back", "Index", "Home", null, new
+{
+	@class = "btn btn-default"
+})
+		</div>
+	</div>
+</div>

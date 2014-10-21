@@ -37,6 +37,13 @@ namespace HotelApplication.Controllers
 		}
 
 		[HttpGet]
+		public ActionResult Details(int id)
+		{
+			Reservation r = reservationRepository.Get(id);
+			return View(r);
+		}
+
+		[HttpGet]
 		public ActionResult NewReservation()
 		{
 			Reservation r = (Reservation)Session["newReservation"];

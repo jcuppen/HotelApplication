@@ -1,53 +1,63 @@
 ﻿@model IEnumerable<DomainModel.Person>
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Guests</h3>
+		</div>
+		<div class="panel-body">
 
-<h2>Index</h2>
+			<table class="table table-striped">
+				<tr>
+					<th>
+						<p><b>First name</b></p>
+					</th>
+					<th>
+						<p><b>Infix</b></p>
+					</th>
+					<th>
+						<p><b>Last name</b></p>
+					</th>
+					<th>
+						<p><b>Date of birth</b></p>
+					</th>
+					<th>
+						<p><b>Gender</b></p>
+					</th>
+					<th></th>
+				</tr>
 
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Infix)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Gender)
-        </th>
-        <th></th>
-    </tr>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => item.FirstName)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Infix)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.LastName)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.DateOfBirth)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.Gender)
+						</td>
+						<td>
+							@Html.ActionLink("Edit", "Edit", new {id = item.PersonID}, new {@class = "btn btn-warning"})
+						</td>
+					</tr>
+				}
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Infix)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfBirth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PersonID })
-        </td>
-    </tr>
-}
-
-</table>
-@Html.ActionLink("Back", "Index", "Home")
+			</table>
+			@Html.ActionLink("Back", "Index", "Home", null, new
+{ @class="btn btn-default"
+})
+		</div>
+	</div>
+</div>

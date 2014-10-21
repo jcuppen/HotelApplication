@@ -1,0 +1,112 @@
+﻿@model DomainModel.Reservation
+
+@{
+	ViewBag.Title = "Details";
+}
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-body">
+
+			<h2>Details</h2>
+
+			<fieldset>
+				<legend>Reservation</legend>
+
+				<div class="display-label">
+					@Html.DisplayNameFor(model => model.ZipCode)
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.ZipCode)
+				</div>
+
+				<div class="display-label">
+					@Html.DisplayNameFor(model => model.City)
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.City)
+				</div>
+
+				<div class="display-label">
+					@Html.DisplayNameFor(model => model.Street)
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.Street)
+				</div>
+
+				<div class="display-label">
+					@Html.DisplayNameFor(model => model.Number)
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.Number)
+				</div>
+
+				<div class="display-label">
+					@Html.DisplayNameFor(model => model.EmailAddress)
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.EmailAddress)
+				</div>
+
+				<div class="display-label">
+					@Html.DisplayNameFor(model => model.TotalPrice)
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.TotalPrice)
+				</div>
+
+				<div class="display-label">
+					@Html.DisplayNameFor(model => model.BankAccountNumber)
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.BankAccountNumber)
+				</div>
+
+				<div class="display-label">
+					@Html.DisplayNameFor(model => model.DayOfArrival)
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.DayOfArrival)
+				</div>
+
+				<div class="display-label">
+					@Html.DisplayNameFor(model => model.DayOfDeparture)
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.DayOfDeparture)
+				</div>
+
+				<div class="display-label">
+					@Html.DisplayNameFor(model => model.InvoiceZipCode)
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.InvoiceZipCode)
+				</div>
+
+				<div class="display-label">
+					@Html.DisplayNameFor(model => model.InvoiceCity)
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.InvoiceCity)
+				</div>
+
+				<div class="display-label">
+					@Html.DisplayNameFor(model => model.InvoiceStreet)
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.InvoiceStreet)
+				</div>
+
+				<div class="display-label">
+					@Html.DisplayNameFor(model => model.InvoiceNumber)
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.InvoiceNumber)
+				</div>
+			</fieldset>
+			<br>
+				@Html.ActionLink("Back to List", "Index", null, new
+{ @class="btn btn-default"
+})
+		</div>
+	</div>
+</div>

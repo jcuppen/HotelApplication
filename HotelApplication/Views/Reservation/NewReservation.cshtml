@@ -3,118 +3,124 @@
 @{
 	ViewBag.Title = "Create";
 }
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">New reservation</h3>
+		</div>
+		<div class="panel-body">
+			@using (Html.BeginForm())
+			{
+				@Html.AntiForgeryToken()
+				@Html.ValidationSummary(true)
 
-<h2>Create</h2>
+				<fieldset>
 
-@using (Html.BeginForm())
+					@for (int i = 0; i < Model.People.Count; i++)
+					{
+
+
+						<div class="editor-label">
+							<p><b>First name</b></p>
+						</div>
+						<div class="editor-field">
+							@Html.EditorFor(model => Model.People[i].FirstName)
+							@Html.ValidationMessageFor(model => Model.People[i].FirstName)
+						</div>
+
+
+						<div class="editor-label">
+							<p><b>Infix</b></p>
+						</div>
+						<div class="editor-field">
+							@Html.EditorFor(model => Model.People[i].Infix)
+							@Html.ValidationMessageFor(model => Model.People[i].Infix)
+						</div>
+
+						<div class="editor-label">
+							<p><b>Last name</b></p>
+						</div>
+						<div class="editor-field">
+							@Html.EditorFor(model => Model.People[i].LastName)
+							@Html.ValidationMessageFor(model => Model.People[i].LastName)
+						</div>
+
+						<div class="editor-label">
+							<p><b>Date of birth</b></p>
+						</div>
+						<div class="editor-field">
+							@Html.EditorFor(model => Model.People[i].DateOfBirth)
+							@Html.ValidationMessageFor(model => Model.People[i].DateOfBirth)
+						</div>
+
+						<div class="editor-label">
+							<p><b>Gender</b></p>
+						</div>
+						<div class="editor-field">
+							@Html.RadioButtonFor(model => Model.People[i].Gender, "Male", true) Male
+							@Html.RadioButtonFor(model => Model.People[i].Gender, "Female", false) Female
+							@Html.ValidationMessageFor(model => Model.People[i].Gender)
+						</div>
+
+					}
+
+					<div class="editor-label">
+						<p><b>Zipcode</b></p>
+					</div>
+					<div class="editor-field">
+						@Html.EditorFor(model => model.ZipCode)
+						@Html.ValidationMessageFor(model => model.ZipCode)
+					</div>
+
+					@Html.HiddenFor(model => model.DayOfArrival)
+					@Html.HiddenFor(model => model.DayOfDeparture)
+
+					<div class="editor-label">
+						<p><b>City</b></p>
+					</div>
+					<div class="editor-field">
+						@Html.EditorFor(model => model.City)
+						@Html.ValidationMessageFor(model => model.City)
+					</div>
+
+					<div class="editor-label">
+						<p><b>Street</b></p>
+					</div>
+					<div class="editor-field">
+						@Html.EditorFor(model => model.Street)
+						@Html.ValidationMessageFor(model => model.Street)
+					</div>
+
+					<div class="editor-label">
+						<p><b>House number</b></p>
+					</div>
+					<div class="editor-field">
+						@Html.EditorFor(model => model.Number)
+						@Html.ValidationMessageFor(model => model.Number)
+					</div>
+
+					<div class="editor-label">
+						<p><b>Email address</b></p>
+					</div>
+					<div class="editor-field">
+						@Html.EditorFor(model => model.EmailAddress)
+						@Html.ValidationMessageFor(model => model.EmailAddress)
+					</div>
+
+					<br>
+					<input type="submit" value="Create" class="btn btn-success" />
+
+					@Html.ActionLink("Cancel", "Index", "Home", null, new
 {
-	@Html.AntiForgeryToken()
-	@Html.ValidationSummary(true)
+	@class = "btn btn-warning"
+})
 
-	<fieldset>
-		<legend>Reservation</legend>
+				</fieldset>
+			}
 
-
-	  @for (int i = 0; i < Model.People.Count; i++)
-   {
-	   
-   
-			<div class="editor-label">
-				@Html.LabelFor(model => Model.People[i].FirstName)
-			</div>
-			<div class="editor-field">
-				@Html.EditorFor(model => Model.People[i].FirstName)
-				@Html.ValidationMessageFor(model => Model.People[i].FirstName)
-			</div>
-
-
-			<div class="editor-label">
-				@Html.LabelFor(model => Model.People[i].Infix)
-			</div>
-			<div class="editor-field">
-				@Html.EditorFor(model => Model.People[i].Infix)
-				@Html.ValidationMessageFor(model => Model.People[i].Infix)
-			</div>
-
-			<div class="editor-label">
-				@Html.LabelFor(model => Model.People[i].LastName)
-			</div>
-			<div class="editor-field">
-				@Html.EditorFor(model => Model.People[i].LastName)
-				@Html.ValidationMessageFor(model => Model.People[i].LastName)
-			</div>
-			
-			<div class="editor-label">
-				@Html.LabelFor(model => Model.People[i].DateOfBirth)
-			</div>
-			<div class="editor-field">
-				@Html.EditorFor(model => Model.People[i].DateOfBirth)
-				@Html.ValidationMessageFor(model => Model.People[i].DateOfBirth)
-			</div>
-			
-			<div class="editor-label">
-				@Html.LabelFor(model => Model.People[i].Gender)
-			</div>
-			<div class="editor-field">
-				@Html.RadioButtonFor(model => Model.People[i].Gender, "Male", true) Male
-				@Html.RadioButtonFor(model => Model.People[i].Gender, "Female", false) Female
-				@Html.ValidationMessageFor(model => Model.People[i].Gender)
-			</div>
-
-		}
-
-		<div class="editor-label">
-			@Html.LabelFor(model => model.ZipCode)
+			@section Scripts {
+				@Scripts.Render("~/bundles/jqueryval")
+			}
 		</div>
-		<div class="editor-field">
-			@Html.EditorFor(model => model.ZipCode)
-			@Html.ValidationMessageFor(model => model.ZipCode)
-		</div>
-
-		@Html.HiddenFor(model => model.DayOfArrival)
-		@Html.HiddenFor(model => model.DayOfDeparture)
-
-		<div class="editor-label">
-			@Html.LabelFor(model => model.City)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(model => model.City)
-			@Html.ValidationMessageFor(model => model.City)
-		</div>
-
-		<div class="editor-label">
-			@Html.LabelFor(model => model.Street)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(model => model.Street)
-			@Html.ValidationMessageFor(model => model.Street)
-		</div>
-
-		<div class="editor-label">
-			@Html.LabelFor(model => model.Number)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(model => model.Number)
-			@Html.ValidationMessageFor(model => model.Number)
-		</div>
-
-		<div class="editor-label">
-			@Html.LabelFor(model => model.EmailAddress)
-		</div>
-		<div class="editor-field">
-			@Html.EditorFor(model => model.EmailAddress)
-			@Html.ValidationMessageFor(model => model.EmailAddress)
-		</div>
-
-		<p>
-			<input type="submit" value="Create" />
-		</p>
-	</fieldset>
-}
-<div>
-	@Html.ActionLink("Cancel", "Index", "Home")
+	</div>
 </div>
-
-@section Scripts {
-	@Scripts.Render("~/bundles/jqueryval")
-}

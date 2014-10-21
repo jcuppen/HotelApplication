@@ -1,36 +1,47 @@
 ﻿@model DomainModel.Room
 
 @{
-    ViewBag.Title = "Details";
+	ViewBag.Title = "Details";
 }
+<div class="container-fluid">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Room details</h3>
+		</div>
+		<div class="panel-body">
+			<fieldset>
 
-<h2>Details</h2>
+				<div class="display-label">
+					<p><b>Minimum price</b></p>
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.MinimumPrice)
+				</div>
 
-<fieldset>
-    <legend>Room</legend>
+				<div class="display-label">
+					<p><b>Additional cost</b></p>
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.AdditionalCosts)
+				</div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.MinimumPrice)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.MinimumPrice)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.AdditionalCosts)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AdditionalCosts)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.RoomSize)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.RoomSize)
-    </div>
-</fieldset>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.RoomID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+				<div class="display-label">
+					<p><b>Room size</b></p>
+				</div>
+				<div class="display-field">
+					@Html.DisplayFor(model => model.RoomSize)
+				</div>
+			</fieldset>
+			<br>
+				@Html.ActionLink("Edit", "Edit", new
+{
+	id = Model.RoomID
+}, new
+{ @class="btn btn-warning"
+})
+				@Html.ActionLink("Back to List", "Index", null, new
+{ @class="btn btn-default"
+})
+		</div>
+	</div>
+</div>
