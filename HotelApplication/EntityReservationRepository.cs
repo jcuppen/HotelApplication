@@ -53,8 +53,10 @@ namespace HotelApplication
 
 		public Reservation Update(Reservation reservation)
 		{
-			dbContext.Reservations.Remove(dbContext.Reservations.First(p => p.ReservationID == reservation.ReservationID));
-			dbContext.Reservations.Add(reservation);
+
+			dbContext.Entry(reservation).State = EntityState.Modified;
+			//dbContext.Reservations.Remove(dbContext.Reservations.First(p => p.ReservationID == reservation.ReservationID));
+			//dbContext.Reservations.Add(reservation);
 			dbContext.SaveChanges();
 			return reservation;
 		}

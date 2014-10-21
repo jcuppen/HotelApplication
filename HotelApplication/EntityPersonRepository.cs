@@ -2,6 +2,7 @@
 using DomainModel.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -28,8 +29,10 @@ namespace HotelApplication
 
 		public Person Update(Person person)
 		{
-			dbContext.Persons.Remove(dbContext.Persons.First(p => p.PersonID == person.PersonID));
-			dbContext.Persons.Add(person);
+
+			dbContext.Entry(person).State = EntityState.Modified;
+			//dbContext.Persons.Remove(dbContext.Persons.First(p => p.PersonID == person.PersonID));
+			//dbContext.Persons.Add(person);
 			dbContext.SaveChanges();
 			return person;
 		}
