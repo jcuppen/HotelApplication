@@ -32,7 +32,7 @@ namespace HotelApplication.Controllers
 		[HttpPost]
 		public ActionResult Create(Room room)
 		{
-			if(room != null)
+			if (room != null)
 			{
 				roomRepository.Create(room);
 				return RedirectToAction("Index");
@@ -43,7 +43,6 @@ namespace HotelApplication.Controllers
 		[HttpGet]
 		public ActionResult Edit(int id)
 		{
-
 			Room room = roomRepository.Get(id);
 
 			return View(room);

@@ -29,10 +29,7 @@ namespace HotelApplication
 
 		public Person Update(Person person)
 		{
-
 			dbContext.Entry(person).State = EntityState.Modified;
-			//dbContext.Persons.Remove(dbContext.Persons.First(p => p.PersonID == person.PersonID));
-			//dbContext.Persons.Add(person);
 			dbContext.SaveChanges();
 			return person;
 		}

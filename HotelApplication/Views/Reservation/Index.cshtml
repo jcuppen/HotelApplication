@@ -6,6 +6,26 @@
 
 <h2>Index</h2>
 
+<form method="post" action="reservation">
+
+	<fieldset>
+		<legend>Filter</legend>
+
+		<div class="editor-label">
+			<b>Test</b>
+		</div>
+		<div class="editor-field">
+			<input type="datetime" name="start" value="@DateTime.Now">
+			<input type="datetime" name="end" value="@DateTime.Now.AddDays(1)">
+		</div>
+
+
+		<p>
+			<input type="submit" value="Filter" />
+		</p>
+	</fieldset>
+</form>
+
 <table>
 	<tr>
 		<th>
@@ -50,7 +70,7 @@
 		<th></th>
 	</tr>
 
-	@foreach(var item in Model)
+	@foreach (var item in Model)
 	{
 		<tr>
 			<td>
@@ -92,14 +112,8 @@
 			<td>
 				@Html.DisplayFor(modelItem => item.InvoiceNumber)
 			</td>
-			<td>
-				@Html.ActionLink("Edit", "Edit", new { id = item.ReservationID }) |
-				@Html.ActionLink("Details", "Details", new { id = item.ReservationID }) |
-				@Html.ActionLink("Delete", "Delete", new { id = item.ReservationID })
-			</td>
 		</tr>
 	}
-
 </table>
 
 @Html.ActionLink("Back", "Index", "Home")

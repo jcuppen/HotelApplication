@@ -22,66 +22,32 @@ namespace HotelApplication.Controllers
 			roomRepository = new EntityRoomRepository();
 		}
 
+		[HttpGet]
 		public ActionResult Index()
 		{
 			var model = reservationRepository.GetAll();
 			return View(model);
 		}
 
-		//[HttpGet]
-		//public ActionResult NewReservation(int numberOfPeople, DateTime begin, DateTime end)
-		//{
-		//	return View(new Reservation(numberOfPeople, begin, end));
-		//}
+		[HttpPost]
+		public ActionResult Index(DateTime start, DateTime end)
+		{
+			var model = reservationRepository.GetBetween(start, end);
+			return View(model);
+		}
 
 		[HttpGet]
 		public ActionResult NewReservation()
 		{
 			Reservation r = (Reservation)Session["newReservation"];
 			Session["rooms"] = r.Rooms;
-			//Reservation res = new Reservation(numberOfPeople, begin, end);
-			//for (int i = 0; i < r.People.Length; i++)
-			//{
-			//	r.People[i] = new Person();
-			//}
 			return View(r);
 		}
 
 		[HttpPost]
 		public ActionResult NewReservation(Reservation reservation)
 		{
-			//var context = new MyEntityContext();
-			//context.Reservations.Attach(reservation);
-			foreach (var person in reservation.People)
-			{
-
-
-			}
-			//reservation.Rooms = (List<Room>) Session["rooms"];
 			Session["newReservation"] = reservation;
-			//List<Room> reservationRooms = (List<Room>) Session["rooms"];
-			//foreach (var item in reservationRooms)
-
-			//var room = context.Rooms.FirstOrDefault(s => s.RoomID == item.RoomID);
-
-			//reservation.Rooms.Add(room);
-			//reservation.Rooms.Add(context.Rooms.FirstOrDefault(s => s.RoomID == item.RoomID));
-
-			//List<Reservation> r = reservationRepository.GetAll();
-
-			//reservation.NumberOfGuests = 3;
-
-			//foreach (var item in reservation.People)
-			//{
-			//	personRepository.Create(item);
-			//}
-
-			//foreach (var item in reservation.Rooms)
-			//{
-			//	roomRepository.Create(item);
-			//}
-
-
 
 			return RedirectToAction("ShowSummary");
 		}
@@ -98,17 +64,11 @@ namespace HotelApplication.Controllers
 			}
 
 			r.TotalPrice = total;
-			
+
 			r.Rooms = roomList;
 			Session["newReservation"] = r;
 			return View(r);
 		}
-
-		//[HttpPost]
-		//public ActionResult ShowSummary()
-		//{
-		//	return null;
-		//}
 
 		[HttpGet]
 		public ActionResult Invoice()
@@ -120,18 +80,23 @@ namespace HotelApplication.Controllers
 		[HttpPost]
 		public ActionResult Invoice(Invoice invoice)
 		{
-			Reservation reservation = (Reservation) Session["newReservation"];
+			Reservation reservation = (Reservation)Session["newReservation"];
 			reservation.InvoiceCity = invoice.City;
 			reservation.InvoiceNumber = invoice.Number;
 			reservation.InvoiceStreet = invoice.Street;
 			reservation.InvoiceZipCode = invoice.ZipCode;
 			reservation.BankAccountNumber = invoice.BankAccountNumber;
 
-
-
 			// alles klaar, verzenden maar
 			reservationRepository.Create(reservation);
-			return null;
+			return RedirectToAction("Success");
+		}
+
+		public ActionResult Success()
+		{
+			Session["newReservation"] = null;
+			Session["rooms"] = null;
+			return View();
 		}
 	}
 }

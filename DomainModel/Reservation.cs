@@ -8,7 +8,6 @@ namespace DomainModel
 	{
 		public virtual List<Person> People { get; set; }
 		public virtual List<Room> Rooms { get; set; }
-		//public int NumberOfGuests { get; set; }
 
 		[Key]
 		public int ReservationID { get; set; }
@@ -54,14 +53,5 @@ namespace DomainModel
 			People = new List<Person>();
 			Rooms = new List<Room>();
 		}
-
-		//public Reservation(DateTime begin, DateTime end)
-		//{
-			//NumberOfGuests = numberOfPeople;
-			//DayOfArrival = begin;
-			//DayOfDeparture = end;
-
-			//People = new List<Person>();
-		//}
 	}
 }

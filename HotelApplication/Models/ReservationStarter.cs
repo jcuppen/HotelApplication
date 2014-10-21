@@ -15,7 +15,6 @@ namespace HotelApplication.Models
 		{
 			Begin = DateTime.Today;
 			End = DateTime.Today.AddDays(1);
-
 		}
 	}
 }

@@ -31,11 +31,6 @@ namespace HotelApplication
 		{
 			dbContext.Entry(room).State = EntityState.Modified;
 			dbContext.SaveChanges();
-
-			//dbContext.Rooms.Remove(dbContext.Rooms.First(p => p.RoomID == room.RoomID));
-			//dbContext.Rooms.
-			//dbContext.Rooms.Add(room);
-			//dbContext.SaveChanges();
 			return room;
 		}
 

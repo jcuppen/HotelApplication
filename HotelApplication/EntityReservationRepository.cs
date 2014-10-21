@@ -22,21 +22,13 @@ namespace HotelApplication
 
 		public Reservation Create(Reservation reservation)
 		{
-			//foreach (var item in reservation.Rooms)
-			//{
-				//var room = dbContext.Rooms.FirstOrDefault(s => s.RoomID == item.RoomID);
-				//dbContext.Rooms.Attach(room);
-				//reservation.Rooms.Add(room);
-				//reservation.Rooms.Add(context.Rooms.FirstOrDefault(s => s.RoomID == item.RoomID));
-			//}
-			//dbContext.Entry(reservation.Rooms).State = EntityState.Unchanged;
 			List<Room> rooms = reservation.Rooms;
 			reservation.Rooms = null;
 			dbContext.Reservations.Add(reservation);
 			dbContext.SaveChanges();
 
 			reservation.Rooms = new List<Room>();
-			//var lastReservation = dbContext.Reservations.Last();
+
 			var lastReservation = dbContext.Reservations.OrderByDescending(i => i.ReservationID).First();
 			dbContext.Reservations.Attach(lastReservation);
 			foreach (var item in rooms)
@@ -55,8 +47,6 @@ namespace HotelApplication
 		{
 
 			dbContext.Entry(reservation).State = EntityState.Modified;
-			//dbContext.Reservations.Remove(dbContext.Reservations.First(p => p.ReservationID == reservation.ReservationID));
-			//dbContext.Reservations.Add(reservation);
 			dbContext.SaveChanges();
 			return reservation;
 		}

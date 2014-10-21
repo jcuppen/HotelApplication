@@ -34,8 +34,6 @@ namespace HotelApplication.Controllers
 			Reservation r = new Reservation();
 			if (reservation != null)
 			{
-				//return RedirectToAction("NewReservation", "Reservation", new
-				//{
 				r.DayOfArrival = reservation.Begin;
 				r.DayOfDeparture = reservation.End;
 
@@ -57,10 +55,8 @@ namespace HotelApplication.Controllers
 				}
 
 				List<Reservation> allReservations = reservationRepository.GetBetween(r.DayOfArrival, r.DayOfDeparture);
-				//x.alle kamers
 				List<Room> allRooms = roomRepository.GetAll();
 				List<Room> reservationRooms = new List<Room>();
-
 
 				foreach (var res in allReservations)
 				{
@@ -83,8 +79,7 @@ namespace HotelApplication.Controllers
 
 						if (room == null)
 						{
-							// shit is fucked
-							Session["msg"] = "Shit";
+							Session["msg"] = "Could not find a Room.";
 							return Redirect("/");
 						}
 
@@ -92,25 +87,19 @@ namespace HotelApplication.Controllers
 						reservationRooms.Add(room);
 
 						numberOfPeople = numberOfPeople - room.RoomSize;
-
 					}
 					else
 					{
-						Session["msg"] = "No rooms";
+						Session["msg"] = "No rooms available for this amount of guests.";
 						return Redirect("/");
 					}
 				}
-				//List<Room> = 
-				//r.Rooms = new Room[reservationRooms.Count];
+
 				r.Rooms = reservationRooms;
-				//r.People = new Person[reservation.NumberOfPeople];
-				//r.People = new Person[reservation.NumberOfPeople];
 				for (int i = 0; i < reservation.NumberOfPeople; i++)
 				{
 					r.People.Add(new Person());
 				}
-				//});
-
 
 				Session["newReservation"] = r;
 
@@ -156,10 +145,9 @@ namespace HotelApplication.Controllers
 			}
 
 			return room;
-
 		}
 
-		private Room roomOf(List<Room> allRooms,int roomSize)
+		private Room roomOf(List<Room> allRooms, int roomSize)
 		{
 			foreach (var item in allRooms)
 			{
@@ -171,7 +159,5 @@ namespace HotelApplication.Controllers
 
 			return null;
 		}
-
-
 	}
 }
